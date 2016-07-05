@@ -1,0 +1,24 @@
+task hello << {
+  print 'hello, '
+}
+
+task world(dependsOn:hello) << {
+  println 'world'
+}
+
+
+// +++ // apply plugin: 'java'
+
+// Initial task definition (maybe not easily editable)
+task setupDatabaseTests << {
+ println 'load test data'
+}
+// Our changes to the task (in a place we can edit them)
+setupDatabaseTests {
+ doFirst {
+ println 'create database schema'
+ }
+ doFirst {
+ println 'drop database schema'
+ }
+}
