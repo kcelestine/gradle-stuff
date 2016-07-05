@@ -22,3 +22,12 @@ setupDatabaseTests {
  println 'drop database schema'
  }
 }
+
+apply plugin: 'java'
+
+task zip(type: Zip) {
+    from 'src/dist'
+    into('libs') {
+        from configurations.runtime
+    }
+}
